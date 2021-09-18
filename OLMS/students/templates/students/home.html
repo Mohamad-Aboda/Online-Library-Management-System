@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="p-5 text-center bg-light">
+    {% if user.is_authenticated %}
+        <h1 class="mb-3">Hello {{request.user}}</h1>
+    {% else %}
+        <h1 class="mb-3">Hello </h1>
+    {% endif %}
+</div>
+{% endblock %}
