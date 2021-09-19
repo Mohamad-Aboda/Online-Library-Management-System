@@ -35,3 +35,4 @@ def logoutUser(request):
 
 def home(request):
     return render(request, 'students/home.html')
+
