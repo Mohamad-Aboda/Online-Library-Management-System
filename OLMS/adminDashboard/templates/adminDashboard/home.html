@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="p-5 text-center bg-light">
+    {% if user.is_authenticated %}
+        <h1 class="mb-3">Hello {{request.user}}</h1>
+    {% else %}
+        <h1 class="mb-3">Hello </h1>
+    {% endif %}
+</div><hr>
+
+
+<div class="p-5 text-center bg-light">
+    
+        <a href="{% url 'addBook' %}" class="btn btn-primary stretched-link">Add Book</a>
+    
+</div>
+{% endblock %}

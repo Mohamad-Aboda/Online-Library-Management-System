@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+    <div class="container">
+        <h1> Add Book </h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+            {{form}}
+            </table>
+
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Add Book</button>
+            </div>
+          </div>
+        </form>
+
+    </div>
+
+
+{% endblock %}

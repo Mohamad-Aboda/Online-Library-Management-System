@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Login</h1>
+</div>
+<br><br>
+<div class="container">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <input class = "btn btn-primary" style="width: 100%;" type="submit", value="login">
+    </form>
+</div>
+{% endblock %}
