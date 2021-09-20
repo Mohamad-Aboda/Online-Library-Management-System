@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 style="text-align:center; color: green;" > Your Borrowed Books </h1>
+   {% for bookDetails in allBorrowedBooks %}
+    <div class="container" style="margin-top: 30px;">
+        <section class="cover">
+        
+            <div style="display: inline; ">
+                <div class="card" style="margin-bottom: 20px; padding-bottom: 20px;" >
+                    <div class="row no-gutters">
+                        <div class="col-sm-5" style="background: #868e96;">
+                            <img src="/media/{{ bookDetails.pic }}"class="card-img-top h-100" alt="...">
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Title: {{ bookDetails.title }}</h5>
+                                <p class="card-text">Author: {{ bookDetails.author }}</p>
+                                <p class="card-text">Summary: {{ bookDetails.summary }}</p>
+                                <p class="card-text">ISBN: {{ bookDetails.ISBN }}</p>
+                                <p class="card-text">Publish year: {{ bookDetails.publish_year }}</p>
+                            </div>
+                        </div>
+                    </div><br>
+                        <a class = "btn btn-primary" style="width: 100%;" href="{% url 'landingpage' %}">Back</a><br>
+                        <a class = "btn btn-primary" style="width: 100%;" href="#">Return Book Back!</a>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+   {% endfor %}
+{% endblock content %}

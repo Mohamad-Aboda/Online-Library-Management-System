@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container" style="margin-top: 30px;">
+        <section class="cover">
+        
+            <div style="display: inline; ">
+                <div class="card" style="margin-bottom: 20px; padding-bottom: 20px;" >
+                    <div class="row no-gutters">
+                        <div class="col-sm-5" style="background: #868e96;">
+                            <img src="/media/{{ bookDetails.pic }}"class="card-img-top h-100" alt="...">
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Title: {{ bookDetails.title }}</h5>
+                                <p class="card-text">Author: {{ bookDetails.author }}</p>
+                                <p class="card-text">Summary: {{ bookDetails.summary }}</p>
+                                <p class="card-text">ISBN: {{ bookDetails.ISBN }}</p>
+                                <p class="card-text">Publish year: {{ bookDetails.publish_year }}</p>
+                                {% if bookDetails.status %}
+                                    <p class="card-text" style="color:red"> Book will be available on {{bookDetails.return_date}}! </p>
+                                {% else %}
+                                    <p class="card-text" style="color:green"> Book Available You Can Borrow It! </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><br>
+                        <a class = "btn btn-primary" style="width: 100%;" href="{% url 'landingpage' %}">Back</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock content %}

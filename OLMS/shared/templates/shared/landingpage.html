@@ -22,7 +22,14 @@
                             <p class="card-text">{{ book.summary }}</p>
                         </div>
                     </div>
-                </div>
+                </div><br>
+                    <a class = "btn btn-primary" style="width: 100%;" href="{% url 'bookDetails' book.id %}">Show Details</a><br>
+                    {% if book.status %}
+                        <a class = "btn btn-primary" style="width: 100%;"   >Book Not Available!</a>
+                    {% else %}
+                        <a class = "btn btn-primary" style="width: 100%;" href="{% url  'allBorrowedBooks' book.id %}">Borrow Book</a>
+
+                    {% endif %}
             </div>
         </div>
        {% endfor %}
