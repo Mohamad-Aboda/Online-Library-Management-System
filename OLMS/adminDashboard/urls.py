@@ -12,5 +12,6 @@ urlpatterns = [
     path("student/<int:student_id>", views.student, name="student"),
     path("allbooks", views.allbooks, name="allbooks"),
     path("borrowedbooks", views.borrowedbooks, name="borrowedbooks"),
-    
+    path("messages", views.messages, name="messages"),
+    path("dismiss/<int:message_id>", views.dismiss, name="dismiss"),
 ]

@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from . forms import BookForm
 from django.contrib.auth import get_user_model
@@ -6,8 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from shared.decorators import super
 from students.models import Book
-
-#https://www.youtube.com/watch?v=tUqUdu0Sjyc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=14&ab_channel=DennisIvy
+from shared.models import Contact
 
 @login_required(login_url='/students/login')
 @super()
@@ -42,7 +42,7 @@ def DeleteBook(request):
 def delete(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
-    return redirect("adminPanel")
+    return redirect("/adminPanel")
 
 @login_required(login_url='/students/login')
 @super()
@@ -93,9 +93,18 @@ def allbooks(request):
     return render(request, "adminDashboard/allbooks.html", context)
 
 @login_required(login_url='/students/login')
-@super()
 def borrowedbooks(request):
     books = Book.objects.filter(status__isnull=False)
     img = Book.objects.filter(status__isnull=False)
     context = {'books':books, 'img':img}
     return render(request, "adminDashboard/borrowedbooks.html", context)
+
+def messages(request):
+    allmessages = Contact.objects.all()
+    context = {'messages':allmessages}
+    return render(request, "adminDashboard/messages.html", context)
+
+def dismiss(request, message_id):
+    message = get_object_or_404(Contact, pk=message_id)
+    message.delete()
+    return redirect("/adminPanel/messages")

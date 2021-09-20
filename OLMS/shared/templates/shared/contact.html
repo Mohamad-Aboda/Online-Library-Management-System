@@ -1,81 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head %}
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
-
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-label{
-    color: lightblue;
-}
-
+    input[type=text], input[type=email], textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+    }
 </style>
+<title>Contact us</title>
+{% endblock %}
 
-<script type="text/javascript">
-    function sendMail() {
-    var link = "mailto:sirmohamedabdelhamid11@gmail.com"
-             + "?cc=mohamedmansourelbob@gmail.com"
-             + "&subject=" + encodeURIComponent("This is my subject")
-             + "&body=" + encodeURIComponent(document.getElementById('myText').value)
-    ;
-    
-    window.location.href = link;
-}
-
-</script>
-</head>
-<body>
-
-<h3>Contact Us</h3>
-
-<div class="container">
-  <form action="" method="POST">
-        {% csrf_token %}
-
-    <label for="fname">Your name:</label>
-    <input type="text" id="fname" name="firstname" placeholder="Enter Your name..">
-
-    <label for="email">Your email:</label>
-    <input style="width: 100%;" autocorrect="off" autocapitalize="off" class="_56bg _55ws _5ruq" name="email" placeholder="Email Address" type="email" id="email"><br><br>
-
-    <label for="mytext">Your message!</label>
-    <textarea id="mytext" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-    <button onclick="sendMail(); ">Send</button>
-
-  </form>
+{% block content %}
+<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Contact Us</h1>
 </div>
-
-</body>
-</html>
+<div class="container" style="margin-top: 30px;">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+     </form>
+</div>
+{% endblock %}

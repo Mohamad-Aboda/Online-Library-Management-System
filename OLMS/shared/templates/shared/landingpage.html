@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block head %}
+<title>Home</title>
+{% endblock %}
 {% block content %}
 <div class="p-5 text-center bg-light">
     <h1 class="mb-3">Welcome To Our Library System</h1>
@@ -8,8 +10,8 @@
 <div class="container" style="margin-top: 30px;">
     <section class="cover">
        {% for book in books %}
-        <div style="display: inline; ">
-            <div class="card" style="margin-bottom: 20px; padding-bottom: 20px;" >
+        <div style="display: inline;">
+            <div class="card" style="margin-top: 25px;">
                 <div class="row no-gutters">
                     <div class="col-sm-5" style="background: #868e96;">
                         <img src="/media/{{ book.pic }}"class="card-img-top h-100" alt="...">
@@ -22,8 +24,20 @@
                             <p class="card-text">{{ book.summary }}</p>
                         </div>
                     </div>
-                </div>
+                </div><br>
             </div>
+            <div class="container" style="padding: 0;">
+                <a class = "btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; width: 100%;" href="{% url 'bookDetails' book.id %}">Show Details</a><br>
+                {% if user.is_authenticated %}
+                {% if not user.is_superuser %}
+                {% if book.status %}
+                    <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;"   >Book Not Available!</a>
+                {% else %}
+                    <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;" href="{% url  'borrow' book.id %}">Borrow Book</a>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endif %}
         </div>
        {% endfor %}
 

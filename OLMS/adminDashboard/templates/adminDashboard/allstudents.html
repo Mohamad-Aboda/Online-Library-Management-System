@@ -1,16 +1,18 @@
 {% extends "base.html" %}
-
+{% block head %}
+<title>Students</title>
+{% endblock %}
 {% block content %}
 <div class="p-5 text-center bg-light">
     <h1 class="mb-3">All Students</h1>
 </div>
 <div class="container" style="margin-top: 30px;  ">
-    <div class="input-group" >
+    <div class="input-group">
         <input type="search" class="form-control rounded" id="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button type="button" onclick="var s = document.getElementById('search').value; window.location.replace('student/'+ s)" class="btn btn-outline-primary">search</button>
     </div>
     {% for user in users %}
-     <div class="card" style="margin: 10px; height: 300px; width: 21rem; display:inline-block;">
+     <div class="card" style="margin-right:3%; margin-left:3%; margin-top: 30px; width: 18rem; display:inline-block;">
          <div class="card-body">
            <h5 class="card-title">Username: {{ user.username }}</h5>
            <p class="card-text">ID: {{ user.id }}</p>

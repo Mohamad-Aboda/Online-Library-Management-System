@@ -1,12 +1,11 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CreateUserForm, editUserForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from shared.decorators import unAuth_user
-
-#https://www.youtube.com/watch?v=tUqUdu0Sjyc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=14&ab_channel=DennisIvy
+from students.models import Book
 
 @unAuth_user
 def register(request):
@@ -19,6 +18,7 @@ def register(request):
     context = {'form' : form}
     return render(request, 'students/register.html', context)
 
+@unAuth_user
 def loginPage(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -26,7 +26,10 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/students')
+            if user.is_superuser:
+                return redirect('/adminPanel')
+            else:
+                return redirect('/student')
         else:
             #ToDo
             pass
@@ -36,11 +39,14 @@ def logoutUser(request):
     logout(request)
     return redirect('/')
 
-@login_required(login_url='/students/login')
+@login_required(login_url='/student/login')
 def home(request):
-    return render(request, 'students/home.html')
+    books = Book.objects.filter(status = request.user.username)
+    img = Book.objects.filter(status = request.user.username)
+    context = {'books':books, 'img':img}
+    return render(request, 'students/home.html', context)
 
-@login_required(login_url='/students/login')
+@login_required(login_url='/student/login')
 def profile(request):
     username = request.user.username
     email = request.user.email
@@ -49,7 +55,7 @@ def profile(request):
     context = {'username' : username, 'email' : email, 'firstName': firstName, 'lastName' : lastName}
     return render(request, 'students/profile.html', context)
 
-@login_required(login_url='/students/login')
+@login_required(login_url='/student/login')
 def editProfile(request):
     form = editUserForm()
     if request.method == 'POST':
@@ -72,8 +78,7 @@ def editProfile(request):
             user.set_password(password)
             user.save()
             logout(request)
-            return redirect('/students')
+            return redirect('/student')
     context = {'form' : form}
     return render(request, 'students/editprofile.html', context)
 
- 
