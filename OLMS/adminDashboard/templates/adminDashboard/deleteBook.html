@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="p-5 text-center bg-light">
+    <h1 class="mb-3">Welcome To Our Library System</h1>
+</div>
+<div class="container" style="margin-top: 30px;  ">
+       {% for book in books %}
+        <div class="card" style="width: 18rem; display:inline-block;">
+            <img class="card-img-top" height="300px" src="/media/{{ book.pic }}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Title: {{ book.title }}</h5>
+              <p class="card-text">Author: {{ book.author }}</p>
+              <a href="/adminPanel/delete/{{book.id}}" class="btn btn-primary">Delete</a>
+              <a href="/adminPanel/update/{{book.id}}" class="btn btn-primary">Update</a>
+            </div>
+        </div>
+       {% endfor %}
+</div>
+{% endblock content %}

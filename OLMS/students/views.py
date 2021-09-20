@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm, editUserForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from shared.decorators import unAuth_user
 
 #https://www.youtube.com/watch?v=tUqUdu0Sjyc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=14&ab_channel=DennisIvy
 
+@unAuth_user
 def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -32,11 +34,13 @@ def loginPage(request):
     
 def logoutUser(request):
     logout(request)
-    return redirect('/students')
+    return redirect('/')
 
+@login_required(login_url='/students/login')
 def home(request):
     return render(request, 'students/home.html')
 
+@login_required(login_url='/students/login')
 def profile(request):
     username = request.user.username
     email = request.user.email
@@ -45,6 +49,7 @@ def profile(request):
     context = {'username' : username, 'email' : email, 'firstName': firstName, 'lastName' : lastName}
     return render(request, 'students/profile.html', context)
 
+@login_required(login_url='/students/login')
 def editProfile(request):
     form = editUserForm()
     if request.method == 'POST':
@@ -71,3 +76,4 @@ def editProfile(request):
     context = {'form' : form}
     return render(request, 'students/editprofile.html', context)
 
+ 

@@ -37,6 +37,7 @@
                     <a href="/" class="nav-item nav-link active">Home</a>
                     <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                     <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                    <a href="{% url 'adminPanel' %}" class="nav-item nav-link">Admin panel</a>
                 </div>
                 <div class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}

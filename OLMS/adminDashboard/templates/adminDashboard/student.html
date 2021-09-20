@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if found %}
+    <div class="p-5 text-center bg-light">
+        <h1 class="mb-3">Student Profile</h1>
+    </div>
+    <br><br>
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-sm-5">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Username</h5>
+                    <p class="card-text">{{username}}</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ID</h5>
+                    <p class="card-text">{{id}}</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-sm-5">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Email</h5>
+                    <p class="card-text">{{email}}</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">First Name</h5>
+                    <p class="card-text">{{first_name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-sm-5">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Last Name</h5>
+                    <p class="card-text">{{last_name}}</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Admin</h5>
+                    <p class="card-text">{{is_superuser}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+{% else %}
+    <div class="p-5 text-center bg-light">
+        <h1 class="mb-3">Student Not Found</h1>
+    </div>
+{% endif %}
+<div class="container" style="margin-top: 20px; width: 75%;">
+    <a href="{% url 'allstudents' %}" style="width: 100%;" class="btn btn-primary">Go back</a>
+</div>
+{% endblock %}  

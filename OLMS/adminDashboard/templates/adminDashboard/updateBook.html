@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="p-5 text-center bg-light">
+  <h1 class="mb-3">Update {{book.title}}</h1>
+</div>
+<br><br>
+<div class="container">
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class = "btn btn-primary" style="width: 100%;" type="submit">Update</button>
+    </form>
+</div>
+{% endblock %}
