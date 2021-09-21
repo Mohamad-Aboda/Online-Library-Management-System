@@ -7,7 +7,7 @@
 <div class="p-5 text-center bg-light">
     <h1 class="mb-3">Books</h1>
 </div>
-<div class="container" style="margin-top: 30px;  ">
+{% comment %} <div class="container" style="margin-top: 30px;  ">
        {% for book in books %}
         <div class="card" style="margin-right:3%; margin-left:3%; margin-top: 30px; width: 18rem; display:inline-block;">
             <img class="card-img-top" height="300px" src="/media/{{ book.pic }}" alt="Card image cap">
@@ -20,5 +20,32 @@
             </div>
         </div>
        {% endfor %}
+</div> {% endcomment %}
+
+<div class="container" style="margin-top: 30px;">
+    <section class="cover">
+       {% for book in books %}
+        <div style="display: inline;">
+            <div class="card" style="margin-top: 25px;">
+                <div class="row no-gutters">
+                    <div class="col-sm-5" style="background: #868e96;">
+                        <img src="/media/{{ book.pic }}"class="card-img-top h-100" alt="...">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h5 class="card-title">Title: <b>{{ book.title }}</b></h5>
+                            <h5 class="card-title">Auther: <b>{{ book.author }}</b></h5>
+                            <h5 class="card-title">Publish Year: <b>{{ book.publish_year }}</b></h5>
+                            <h2 style=" color:blue">Book description</h2>
+                            <p class="card-text"><i>{{ book.summary }}</i></p>
+                        </div>
+                    </div>
+                </div><br>
+            </div>
+        </div>
+       {% endfor %}
+
+    </section>
 </div>
+
 {% endblock content %}

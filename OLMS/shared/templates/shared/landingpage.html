@@ -18,10 +18,11 @@
                     </div>
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title">Title: {{ book.title }}</h5>
-                            <h5 class="card-title">Auther: {{ book.author }}</h5>
-                            <h5 class="card-title">Publish Year: {{ book.publish_year }}</h5>
-                            <p class="card-text">{{ book.summary }}</p>
+                            <h5 class="card-title">Title: <b>{{ book.title }}</b></h5>
+                            <h5 class="card-title">Auther: <b>{{ book.author }}</b></h5>
+                            <h5 class="card-title">Publish Year: <b>{{ book.publish_year }}</b></h5>
+                            <h2 style=" color:blue">Book description</h2>
+                            <p class="card-text"><i>{{ book.summary }}</i></p>
                         </div>
                     </div>
                 </div><br>
@@ -31,7 +32,7 @@
                 {% if user.is_authenticated %}
                 {% if not user.is_superuser %}
                 {% if book.status %}
-                    <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;"   >Book Not Available!</a>
+                    <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;color:red"   >Book Not Available!</a>
                 {% else %}
                     <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;" href="{% url  'borrow' book.id %}">Borrow Book</a>
                 </div>

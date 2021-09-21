@@ -17,11 +17,12 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title">Title: {{ bookDetails.title }}</h5>
-                                <p class="card-text">Author: {{ bookDetails.author }}</p>
-                                <p class="card-text">Summary: {{ bookDetails.summary }}</p>
-                                <p class="card-text">ISBN: {{ bookDetails.ISBN }}</p>
-                                <p class="card-text">Publish year: {{ bookDetails.publish_year }}</p>
+                                <h5 class="card-title">Title: <b>{{ bookDetails.title }}</b></h5>
+                                <p class="card-text">Author: <b>{{ bookDetails.author }}</b></p>
+                                <h2 style=" color:blue">Book description</h2>
+                                <p class="card-text"><i>{{ bookDetails.summary }}</i></p>
+                                <p class="card-text">ISBN: <b>{{ bookDetails.ISBN }}</b></p>
+                                <p class="card-text">Publish year: <b>{{ bookDetails.publish_year }}</b></p>
                             </div>
                         </div>
                     </div>
