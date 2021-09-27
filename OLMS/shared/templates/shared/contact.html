@@ -20,7 +20,7 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" value="Submit">
+        <input style="width: 100%;" class="btn btn-primary" type="submit" value="Submit">
      </form>
 </div>
 {% endblock %}

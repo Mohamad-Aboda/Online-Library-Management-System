@@ -14,8 +14,8 @@
             <div class="card-body">
               <h5 class="card-title">Title: {{ book.title }}</h5>
               <p class="card-text">Author: {{ book.author }}</p>
-              <a href="/adminPanel/delete/{{book.id}}" style="width: 49%;" class="btn btn-primary">Delete</a>
-              <a href="/adminPanel/update/{{book.id}}" style="width: 49%;" class="btn btn-primary">Update</a>
+              <a href="/adminPanel/delete/{{book.id}}" style="width: 49%;" class="btn btn-danger">Delete</a>
+              <a href="/adminPanel/update/{{book.id}}" style="width: 49%;" class="btn btn-warning">Update</a>
             </div>
         </div>
        {% endfor %}

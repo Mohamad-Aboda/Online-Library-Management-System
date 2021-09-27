@@ -31,7 +31,6 @@ def loginPage(request):
             else:
                 return redirect('/student')
         else:
-            #ToDo
             pass
     return render(request, 'students/login.html')
     

@@ -13,7 +13,7 @@
            <h5 class="card-title">Subject: {{ message.subject }}</h5>
            <p class="card-text">From: {{ message.email }}</p>
            <p class="card-text">Message: {{ message.message }}</p>
-           <a href="/adminPanel/dismiss/{{message.id}}" style="width: 100%;" class="btn btn-primary">Dismiss</a>
+           <a href="/adminPanel/dismiss/{{message.id}}" style="width: 100%;" class="btn btn-danger">Dismiss</a>
          </div>
      </div>
     {% endfor %}

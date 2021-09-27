@@ -13,7 +13,7 @@
   <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form|crispy }}
-      <button class = "btn btn-primary" style="width: 100%;" type="submit">Upload</button>
+      <button class = "btn btn-success" style="width: 100%;" type="submit">Upload</button>
     </form>
 </div>
 {% endblock %}

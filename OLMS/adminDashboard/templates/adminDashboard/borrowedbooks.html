@@ -7,26 +7,6 @@
 <div class="p-5 text-center bg-light">
     <h1 class="mb-3">Borrowed Books</h1>
 </div>
-{% comment %} <div class="container" style="margin-top: 30px;  ">
-    {% for book in books %}
-        <div class="card" style="margin-right:3%; margin-left:3%; margin-top: 30px; width: 18rem; display:inline-block;">
-            <img class="card-img-top" height="300px" src="/media/{{ book.pic }}" alt="Card image cap">
-            <div class="card-body" style="line-height: 0.8;">
-                <h5 class="card-title">Title: {{ book.title }}</h5>
-                <p class="card-text">Author: {{ book.author }}</p>
-                <p class="card-text">Summary: {{ book.summary }}</p>
-                <p class="card-text">ISBN: {{ book.ISBN }}</p>
-                <p class="card-text">Publish year: {{ book.publish_year }}</p>
-                {% if user.is_superuser %}
-                <p class="card-text">Borrowed by: {{ book.status }}</p>
-                {% endif %}
-                <p class="card-text">Return date: {{book.return_date}}</p>
-            </div>
-        </div>
-    {% endfor %}
-</div> {% endcomment %}
-
-
 <div class="container" style="margin-top: 30px;">
     <section class="cover">
        {% for book in books %}
@@ -41,6 +21,11 @@
                             <h5 class="card-title">Title: <b>{{ book.title }}</b></h5>
                             <h5 class="card-title">Auther: <b>{{ book.author }}</b></h5>
                             <h5 class="card-title">Publish Year: <b>{{ book.publish_year }}</b></h5>
+                            <h5 class="card-title">ISBN: <b>{{ book.ISBN }}</b></h5>
+                            <h5 class="card-title">Return date: <b>{{ book.return_date }}</b></h5>
+                            {% if user.is_superuser %}
+                                <h5 class="card-title">Borrowed by: <b>{{ book.status }}</b></h5>
+                            {% endif %}
                             <h2 style=" color:blue">Book description</h2>
                             <p class="card-text"><i>{{ book.summary }}</i></p>
                         </div>

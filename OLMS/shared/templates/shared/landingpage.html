@@ -32,7 +32,7 @@
                 {% if user.is_authenticated %}
                 {% if not user.is_superuser %}
                 {% if book.status %}
-                    <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;color:red"   >Book Not Available!</a>
+                    <a class = "btn btn-secondary" style="margin-top: 5px; width: 100%;"   >Book Not Available!</a>
                 {% else %}
                     <a class = "btn btn-primary" style="margin-top: 5px; width: 100%;" href="{% url  'borrow' book.id %}">Borrow Book</a>
                 </div>
